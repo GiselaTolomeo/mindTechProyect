@@ -2,10 +2,30 @@
             <br>
             <form id="formulario">
                 <label>NOMBRE</label>
-                <input id="nombre" type="text" placeholder="Ingresa tu Nombre .."><br>
+                <input id="nombre" type="text" placeholder="Ingresa tu Nombre .." required="" pattern="[a-zA-Z]+" ><br>
                 <label>EDAD</label>
-                <input id="edad" type="number" placeholder="Ingresa tu edad .."><br>
+                <input id="edad" type="number" placeholder="Ingresa tu edad .." required=""><br>
                 <label>CORREO</label>
                 <input type="email" placeholder="Ingresa tu Correo electronico .."><br>
                 <input type="submit" value="ENVIAR">
+            </form>
+
+
+            <form class="formulario">
+                <label>NOMBRE:</label><br>
+                <input type="text" name="Nombre" placeholder="Escribe aquí tu Nombre..." required="" pattern="[a-zA-Z]+">
+                <br><br>
+                <label>APELLIDO:</label><br>
+                <input type="text" name="Apellido" placeholder="Escribe aquí tu Apellido..." required="" pattern="[a-zA-Z]+">
+                <br><br>
+                <label>EDAD:</label><br>
+                <input type="number" name="Edad" placeholder="Indica aquí tu edad..." required="" pattern="[0-9]+">
+                <br><br>
+                <label>CORREO ELECTRONICO:</label><br>
+                <input type="mail" name="Correo" placeholder="Dejanos aquí tu correo..." required="">
+                <br><br>
+                <label>CONSULTA:</label> <br><br>
+                <textarea name="Consulta" id="comentarios" cols="45" rows="10" required=""></textarea><br><br>
+                <input type="submit" value="ENVIAR">
+                <input type="button" value="BORRAR">
             </form>

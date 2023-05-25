@@ -148,6 +148,19 @@ article p{
     color:saddlebrown;
     text-align: center;
     margin: 40px;
+    font-size: 25px;
+}
+
+.formulario{
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.consulta{
+    font-size: x-large;
 }
 
 
