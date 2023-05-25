@@ -1,5 +1,6 @@
 
 // ARRAY VACIO PARA PUSHEAR LOS ARTICULOS QUE SE COMPRAN AL CARRITO:
+let productosJSON =[];
 let carrito =[];
 
 // LLAMO AL CONTENEDOR (ESPACIO) DONDE VOY A INSERTAR MIS PRODUCTOS (ARRAY DE OBEJTOS):
@@ -48,14 +49,28 @@ document.getElementById("tablabody").innerHTML += `
 <td>${productoAComprar.articulo}</td>
 <td>${productoAComprar.codigo}</td>
 <td>${productoAComprar.precio}</td>
-<td>
-<input id= "boton${producto.id}" type="button" value="BORRAR"> 
-</td>
+<td><button onclick="eliminar(event)">Eliminar 🗑 </button></td>
 </tr>
-`
+`// EN EL BOTON LLAMO A LA FUNCION ELIMINAR(EVENT)
+
 let totalCarrito = carrito.reduce((acumulador, prod) => acumulador+prod.precio, 0);
 document.getElementById("total").innerText = `TOTAL A PAGAR: UDS ${totalCarrito}`;
 }
+
+// FUNCION PARA ELIMINAR UN PRODUCTO DEL CARRITO (ev.target es el evento que dispara la funcion que es el boton con el ev on click que pusimos en la linea de la tabla, su padre es el td y el padre de este el tr que es la fila completa de la tabla)
+
+function eliminar(ev){
+    let fila = ev.target.parentElement.parentElement;
+    let id = fila.children[0].innerText;
+    let indice = carrito.findIndex(producto => producto.id == id);
+    //removemos el producto del carrito y de la tabla:
+    carrito.splice(indice,1);
+    fila.remove();
+    //recalculamos total:
+    let preciosAcumulados = carrito.reduce((acumulador, producto)=> acumulador+ producto.precio,0);
+    total.innerText=`TOTAL A PAGAR: UDS ${preciosAcumulados}`;
+}
+
 
 let campoNombre = document.getElementById("nombre");
 let campoApellido = document.getElementById("apellido");
