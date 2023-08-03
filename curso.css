@@ -113,7 +113,6 @@ th{
 }
 .btn{
     color:saddlebrown;
-
     background-color: rgb(240, 222, 215);
     border: none;
 }
@@ -163,6 +162,27 @@ article p{
     font-size: x-large;
 }
 
+.finalizar{
+
+    color:saddlebrown;
+    background-color: rgb(240, 222, 215);
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 8px;
+    }
+
+.finalizar:hover{
+    color: rgb(240, 222, 215);
+    background-color:saddlebrown;
+    }
+
+input{
+    border-radius: 5px;
+}
+textarea{
+    border-radius: 5px;
+}
 
 
 

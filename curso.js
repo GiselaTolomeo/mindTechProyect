@@ -67,7 +67,7 @@ function eliminar(ev){
     carrito.splice(indice,1);
     fila.remove();
     //recalculamos total:
-    let preciosAcumulados = carrito.reduce((acumulador, producto)=> acumulador+ producto.precio,0);
+    let preciosAcumulados = carrito.reduce((acumulador, producto)=> acumulador + producto.precio, 0);
     total.innerText=`TOTAL A PAGAR: UDS ${preciosAcumulados}`;
 }
 
@@ -76,6 +76,7 @@ let campoNombre = document.getElementById("nombre");
 let campoApellido = document.getElementById("apellido");
 let campoEdad = document.getElementById("edad");
 
+//VALIDACIONES DE LOS FORMULARIOS
 campoNombre.oninput = () =>{
     if (isNaN(campoNombre.value)){
         campoNombre.style.color ="black"
@@ -92,26 +93,40 @@ campoEdad.oninput = () =>{
     }else{campoApellido.style.color ="black"}
 }
 
-localStorage.setItem("usuario", "Gisela M. Tolomeo");
-localStorage.setItem("dni", 34058293);
-localStorage.setItem("train", true);
+let finalizarCompra = document.getElementById("fin");
 
-let usuario = localStorage.getItem("usuario");
-let dni = parseInt(localStorage.getItem("dni"));
-let train = localStorage.getItem("train") == "true";
+finalizarCompra.addEventListener("click", verificarCarro);
 
-console.log(usuario);
-console.log(dni);
-console.log(train);
+function verificarCarro(){
 
+    if (carrito == 0){
 
-
-
-
-
-
+        Swal.fire({
+            title: "Oops!",
+            text: "Ud. no posee articulos en el carrito!",
+            imageUrl: "./images/logo.png",
+            imageWidth: 80,
+            imageHeight: 80,
+            imageAlt: 'LOGO DE MIND TECH'
+          })
 
 
+    }else{
+            Swal.fire({
+                title: "Compra finalizada con éxito!",
+                text: "Recibirá por correo las instrucciones de pago. Muchas Gracias por confiar en Mind Tech!",
+                imageUrl: "./images/logo.png",
+                imageWidth: 80,
+                imageHeight: 80,
+                imageAlt: 'LOGO DE MIND TECH'
+              })
+              carrito=[];
+              document.getElementById("tablabody").innerHTML = ``;
+              total.innerText=`TOTAL A PAGAR:`;
+              
+        }
+
+    }
 
 
 
@@ -121,16 +136,18 @@ console.log(train);
 
 
 
-//VER!!! PARA BORRAR ARTICULO DEL CARRITO:
-// let botonBorrar = document.getElementById(`boton${producto.id}`).addEventListener("click", function(){
-//     console.log(botonBorrar);
-// })
-// console.log(botonBorrar);
 
-// function borrarArticulo(productoAEliminar){
-//     carrito.remove(productoAEliminar);
-//     alert(`El producto "${productoAEliminar.articulo}" se ha eliminado carrito!`)
-// }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
