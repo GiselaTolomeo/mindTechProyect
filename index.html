@@ -13,20 +13,40 @@
 </head>
 <body>
 
-    <nav id="menu" class="barra">
-        <ul>
-            <li><a href="index.html">INICIO</a></li>
-            <li><a href="#productos">PRODUCTOS</a></li>
-            <li><a href="#novedades">NOVEDADES</a></li>
-            <li><a href="#nosotros">NOSOTROS</a></li>
-            <li><a href="#contacto">CONTACTO</a></li>
-        </ul>
+    <!-- NAVBAR BOOTSTRAP -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">INICIO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#productos">PRODUCTOS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#novedades">NOVEDADES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#nosotros">NOSOTROS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contacto">CONTACTO</a>
+              </li>
+            </ul>
+          </div>
+        </div>
     </nav>
-
+<!-- LOGO -->
+    <div class="container-logo">
         <img class="logo" src="./images/logo.png" alt="logo" height="250" width="250">
-
-    <img id="salon" src="images/nosotros2.png" alt="salon" height="340" width="900"data-aos="fade-up" data-aos-duration="2000">
-
+    </div>
+    <div class="container-salon">
+        <img id="salon" class="img-90" src="images/nosotros2.png" alt="salon" height="340" width="900"data-aos="fade-up" data-aos-duration="2000">
+    </div>
+    <!-- SECTION PRODUCTOS -->
     <div><p id="productos" class="divisor">PRODUCTOS</p></div>
     <div id="misprods" class="row">
         <!-- Aca cartas con mis productos -->
@@ -63,7 +83,7 @@
                 stay that way.</p>
          </article>
         <article>
-            <img id="imagen" src="images/novedad3.png" alt="imagen relojes apple" height="380" width="1300"data-aos="fade-up" data-aos-duration="2000">   
+            <img id="imagen" class="img-90" src="images/novedad3.png" alt="imagen relojes apple" height="380" width="1300"data-aos="fade-up" data-aos-duration="2000">   
         </article>
 
         <article>
@@ -78,7 +98,7 @@
         </article>
        
         <article>
-            <img  id="imagen" src="images/nosotros.png" alt="gente trabajando" height="380" width="1300"data-aos="fade-up" data-aos-duration="2000">
+            <img  id="imagen" class="img-90" src="images/nosotros.png" alt="gente trabajando" height="380" width="1300"data-aos="fade-up" data-aos-duration="2000">
         </article>
         <article>
         <p>Our path to success

@@ -10,7 +10,7 @@ let contProductos = document.getElementById("misprods");
 
     for(producto of productos){
         contProductos.innerHTML += `
-        <div class="card col sm-2">
+        <div class="card col-12 col-md-6 col-lg-4 col-xl-2">
             <img src=${producto.foto} class="card-img-top">
                 <div class="card-body">
                     <h2 class="card-title-articulo">ARTICULO: ${producto.articulo}</h2>
