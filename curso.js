@@ -1,15 +1,14 @@
-
 // ARRAY VACIO PARA PUSHEAR LOS ARTICULOS QUE SE COMPRAN AL CARRITO:
-let productosJSON =[];
-let carrito =[];
+let productosJSON = [];
+let carrito = [];
 
 // LLAMO AL CONTENEDOR (ESPACIO) DONDE VOY A INSERTAR MIS PRODUCTOS (ARRAY DE OBEJTOS):
 let contProductos = document.getElementById("misprods");
 
 //INSERTO LOS PRODUCTOS CON UN BUCLE FOR OF DE MI ARRAY PRODUCTOS CON INNERHTML PEGANDO UNA ESTRUCTURA DE "CARD" DE BOOTSTRAP EDITANDO LOS DATOS CORRESPONDIENTES:
 
-    for(producto of productos){
-        contProductos.innerHTML += `
+for (producto of productos) {
+  contProductos.innerHTML += `
         <div class="card col-12 col-md-6 col-lg-4 col-xl-2">
             <img src=${producto.foto} class="card-img-top">
                 <div class="card-body">
@@ -20,154 +19,118 @@ let contProductos = document.getElementById("misprods");
                     <p class="card-text-precio">PRECIO: uds ${producto.precio}.</p>
                     <button id= 'btn${producto.id}' class="btn btn-warning">COMPRAR</button>
                 </div>  
-        </div>`
-    } 
+        </div>`;
+}
 
 // RECORREMOS CON UN FOR EACH CADA PRODUCTO PARA ESCUCHAR EL EVENTO CON EL CLICK DEL BOTON COMPRAR, PARA ELLO USAMOS EL BOTON DINAMICO CON EL .ID:
-productos.forEach((producto)=>{
-    document.getElementById(`btn${producto.id}`).onclick = () => {agregarAlCarrito(producto)}
-    
-}) 
+productos.forEach((producto) => {
+  document.getElementById(`btn${producto.id}`).onclick = () => {
+    agregarAlCarrito(producto);
+  };
+});
 
 //CREAMOS LA FUNCION INDICADA EN EL FOR EACH DONDE PUSHEAMOS EL ARTICULO AL CARRITO, DAMOS AVISO CON ALERT e INSERTAMOS LA TABLA CON LA DESCRIPCION DEL PRODUCTO AGREGADO:
-function agregarAlCarrito(productoAComprar){
-carrito.push(productoAComprar);
+function agregarAlCarrito(productoAComprar) {
+  carrito.push(productoAComprar);
 
-//Sweetalert para notificar que se agregó al carrito:
+  //Sweetalert para notificar que se agregó al carrito:
 
-Swal.fire({
+  Swal.fire({
     title: productoAComprar.articulo,
-    text: 'Se ha cargado con éxito al carrito!',
+    text: "Se ha cargado con éxito al carrito!",
     imageUrl: productoAComprar.foto,
     imageWidth: 200,
     imageHeight: 200,
-    imageAlt: 'Imagen del producto agregado al carro',
-  })
+    imageAlt: "Imagen del producto agregado al carro",
+  });
 
-document.getElementById("tablabody").innerHTML += `
+  document.getElementById("tablabody").innerHTML += `
 <tr>
 <td>${productoAComprar.articulo}</td>
 <td>${productoAComprar.codigo}</td>
 <td>${productoAComprar.precio}</td>
 <td><button onclick="eliminar(event)">Eliminar 🗑 </button></td>
 </tr>
-`// EN EL BOTON LLAMO A LA FUNCION ELIMINAR(EVENT)
+`; // EN EL BOTON LLAMO A LA FUNCION ELIMINAR(EVENT)
 
-let totalCarrito = carrito.reduce((acumulador, prod) => acumulador+prod.precio, 0);
-document.getElementById("total").innerText = `TOTAL A PAGAR: UDS ${totalCarrito}`;
+  let totalCarrito = carrito.reduce(
+    (acumulador, prod) => acumulador + prod.precio,
+    0
+  );
+  document.getElementById(
+    "total"
+  ).innerText = `TOTAL A PAGAR: UDS ${totalCarrito}`;
 }
 
 // FUNCION PARA ELIMINAR UN PRODUCTO DEL CARRITO (ev.target es el evento que dispara la funcion que es el boton con el ev on click que pusimos en la linea de la tabla, su padre es el td y el padre de este el tr que es la fila completa de la tabla)
 
-function eliminar(ev){
-    let fila = ev.target.parentElement.parentElement;
-    let id = fila.children[0].innerText;
-    let indice = carrito.findIndex(producto => producto.id == id);
-    //removemos el producto del carrito y de la tabla:
-    carrito.splice(indice,1);
-    fila.remove();
-    //recalculamos total:
-    let preciosAcumulados = carrito.reduce((acumulador, producto)=> acumulador + producto.precio, 0);
-    total.innerText=`TOTAL A PAGAR: UDS ${preciosAcumulados}`;
+function eliminar(ev) {
+  let fila = ev.target.parentElement.parentElement;
+  let id = fila.children[0].innerText;
+  let indice = carrito.findIndex((producto) => producto.id == id);
+  //removemos el producto del carrito y de la tabla:
+  carrito.splice(indice, 1);
+  fila.remove();
+  //recalculamos total:
+  let preciosAcumulados = carrito.reduce(
+    (acumulador, producto) => acumulador + producto.precio,
+    0
+  );
+  total.innerText = `TOTAL A PAGAR: UDS ${preciosAcumulados}`;
 }
-
 
 let campoNombre = document.getElementById("nombre");
 let campoApellido = document.getElementById("apellido");
 let campoEdad = document.getElementById("edad");
 
 //VALIDACIONES DE LOS FORMULARIOS
-campoNombre.oninput = () =>{
-    if (isNaN(campoNombre.value)){
-        campoNombre.style.color ="black"
-    }else{campoNombre.style.color ="red"}
-}
-campoApellido.oninput = () =>{
-    if (isNaN(campoNombre.value)){
-        campoApellido.style.color ="black"
-    }else{campoApellido.style.color ="red"}
-}
-campoEdad.oninput = () =>{
-    if (isNaN(campoNombre.value)){
-        campoApellido.style.color ="red"
-    }else{campoApellido.style.color ="black"}
-}
+campoNombre.oninput = () => {
+  if (isNaN(campoNombre.value)) {
+    campoNombre.style.color = "black";
+  } else {
+    campoNombre.style.color = "red";
+  }
+};
+campoApellido.oninput = () => {
+  if (isNaN(campoNombre.value)) {
+    campoApellido.style.color = "black";
+  } else {
+    campoApellido.style.color = "red";
+  }
+};
+campoEdad.oninput = () => {
+  if (isNaN(campoNombre.value)) {
+    campoApellido.style.color = "red";
+  } else {
+    campoApellido.style.color = "black";
+  }
+};
 
 let finalizarCompra = document.getElementById("fin");
 
 finalizarCompra.addEventListener("click", verificarCarro);
 
-function verificarCarro(){
-
-    if (carrito == 0){
-
-        Swal.fire({
-            title: "Oops!",
-            text: "Ud. no posee articulos en el carrito!",
-            imageUrl: "./images/logo.png",
-            imageWidth: 80,
-            imageHeight: 80,
-            imageAlt: 'LOGO DE MIND TECH'
-          })
-
-
-    }else{
-            Swal.fire({
-                title: "Compra finalizada con éxito!",
-                text: "Recibirá por correo las instrucciones de pago. Muchas Gracias por confiar en Mind Tech!",
-                imageUrl: "./images/logo.png",
-                imageWidth: 80,
-                imageHeight: 80,
-                imageAlt: 'LOGO DE MIND TECH'
-              })
-              carrito=[];
-              document.getElementById("tablabody").innerHTML = ``;
-              total.innerText=`TOTAL A PAGAR:`;
-              
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function verificarCarro() {
+  if (carrito == 0) {
+    Swal.fire({
+      title: "Oops!",
+      text: "Ud. no posee articulos en el carrito!",
+      imageUrl: "./images/logo.png",
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: "LOGO DE MIND TECH",
+    });
+  } else {
+    Swal.fire({
+      title: "Compra finalizada con éxito!",
+      text: "Recibirá por correo las instrucciones de pago. Muchas Gracias por confiar en Mind Tech!",
+      imageUrl: "./images/logo.png",
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: "LOGO DE MIND TECH",
+    });
+    carrito = [];
+    document.getElementById("tablabody").innerHTML = ``;
+    total.innerText = `TOTAL A PAGAR:`;
+  }
+}

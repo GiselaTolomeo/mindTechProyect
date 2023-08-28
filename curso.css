@@ -29,12 +29,17 @@ body{
 }
 
 /* IMAGENES */
-.logo{
+.container-logo{
     margin:auto;
-    margin-top: 50px;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 25%;
     height: auto;
+}
+
+.logo{
+    margin-top: 10vh;
 }
 
 .img-90{
@@ -45,10 +50,17 @@ body{
 }
 
 /* NABVAR */
-.nav-link{
+.nav-link {
     text-decoration: none;
     color: rgb(221, 172, 156);
-    font-size: clamp(1.2rem, 2.2vw, 3rem); 
+    font-size: clamp(1.2rem, 2vw, 2.5rem); 
+    margin: 0.5rem 0.5rem;
+}
+
+.navbar-brand{
+    font-size: clamp(1.2rem, 2vw, 2.5rem); 
+    margin: 0.5rem 0.5rem;
+
 }
 
 /* TITULOS Y TEXTO */
